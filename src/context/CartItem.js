@@ -8,22 +8,27 @@ const ItemSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       if (state.items.length > 0) {
+        let find = true;
         state.items.forEach((element) => {
           if (element.title === action.payload.title) {
             element.quantity++;
-            return;
-          } else {
-            state.items = [action.payload, ...state.items];
+            find = false;
           }
         });
+        console.log(find);
+        if (find) {
+          state.items = [action.payload, ...state.items];
+          console.log("inside out");
+        }
       } else {
         state.items = [action.payload, ...state.items];
+        console.log("outside");
       }
     },
     removeItem: (state, action) => {
       state.items.forEach((element) => {
         if (element.title === action.payload.title) {
-            console.log(element.quantity);
+          console.log(element.quantity);
           if (element.quantity === 1) {
             state.items = state.items.filter(
               (element) => element.title !== action.payload.title
@@ -34,6 +39,9 @@ const ItemSlice = createSlice({
         }
       });
     },
+    addCart:(state,action)=>{
+      state.items=action.payload;
+    }
   },
 });
 

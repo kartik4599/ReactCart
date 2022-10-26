@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleAction } from "../../context/ShowCart";
 import classes from "./CartButton.module.css";
 
-const CartButton = (props) => {
+const CartButton = () => {
   const dispatch = useDispatch();
   const toggleHandler = () => {
     dispatch(toggleAction.showCart());

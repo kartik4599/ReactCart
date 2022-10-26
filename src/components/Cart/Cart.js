@@ -3,11 +3,12 @@ import Card from "../UI/Card";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
-const Cart = (props) => {
+const Cart = () => {
   const items = useSelector((state) => state.item.items);
-  const list = items.map((element) => {
+  const list = items.map((element, index) => {
     return (
       <CartItem
+        key={index}
         item={{
           title: element.title,
           quantity: element.quantity,
@@ -21,9 +22,7 @@ const Cart = (props) => {
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
-      <ul>
-        {list}
-      </ul>
+      <ul>{list}</ul>
     </Card>
   );
 };

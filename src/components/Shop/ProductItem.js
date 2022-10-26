@@ -3,11 +3,12 @@ import Card from "../UI/Card";
 import classes from "./ProductItem.module.css";
 import { itemAction } from "../../context/CartItem";
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const { id, title, price, description } = props;
   const dispatch = useDispatch();
 
   const cartHandler = () => {
     const obj = {
+      id: id,
       title: title,
       quantity: 1,
       amount: price,
